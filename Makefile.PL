@@ -4,7 +4,7 @@ use warnings;
 
 
 
-use ExtUtils::MakeMaker 0.010;
+use ExtUtils::MakeMaker 6.30;
 
 
 
@@ -24,7 +24,7 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "LWP::UserAgent" => 0
   },
-  "VERSION" => "0.010",
+  "VERSION" => "0.011",
 );
 
 

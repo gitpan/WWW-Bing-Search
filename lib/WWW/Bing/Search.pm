@@ -1,6 +1,6 @@
-package WWW::Bing::Serach;
+package WWW::Bing::Search;
 {
-    $Bing::Search::VERSION = '0.010';
+    $Bing::WWW::Search::VERSION = '0.011';
 }
 
 use warnings;
@@ -37,13 +37,13 @@ sub Search {
 	$minPages = $args{'minPages'} ? delete($args{'minPages'}) : $minPages;
     }
     $query =~ s/\s/+/;
-    $query =~ s/([^A-Za-z0-9])/sprintf("%%%02X", ord($1))/seg;
-    print $query;
+    my $pq = $query;
+    $query =~ s/([^A-Za-z0-9+])/sprintf("%%%02X", ord($1))/seg;
     while ($minPages) {
 	my $ua = LWP::UserAgent->new();
 	$ua->timeout($timeout);
 	$ua->proxy($proxy) if ($proxy ne 0);
-	$rawResult = $ua->get("http://www.bing.com/search?q=$query&qs=n&filt=all&pq=$query&sc=0-0&sp=-1&sk=&first=$first&FORM=PERE");
+	$rawResult = $ua->get("http://www.bing.com/search?q=$query&qs=n&filt=all&pq=$pq&sc=1-10&sp=-1&sk=&first=$first&FORM=PERE");
 	_parse();
 	$minPages--;
 	$first+=10;

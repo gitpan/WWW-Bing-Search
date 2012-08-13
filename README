@@ -2,7 +2,7 @@ NAME
     WWW::Bing::Search - Parser of Bing Search Engine search results
 
 VERSION
-    version 0.010
+    version 0.011
 
 SYNOPSIS
         my $bing = WWW::Bing::Search->New;
@@ -55,16 +55,31 @@ USAGE
 
 	timeout		Specifies the timeout waiting for response in seconds
 
-    $bing->GetResult; 
+    Search( "query" )
+    Run query to bing with default values of minimum pages  to parse (1)  and offset (0)
+    
+    You can configure the query by passing the following to "Search":
+
+	query 		Need to specifies when seted not bigger one option
+			In fact, a search query
+	
+	minPages	Number of pages to parse (one page output of Bing containing 10 results)
+			by default this value is 10
+	
+	first		Offset from the first result of output
+			by default (0)
+    
+
+    GetResult 
     Returns a result e.g. http://test.com/
     
-    $bing->GetResults; 
+    GetResults 
     Returns an array with all the results recived
     
-    $bing->TotalCount; 
+    TotalCount
     Returns number of results the proposed search engine
     
-    $bing->Count; 
+    Count
     Returns number of results parsed with this module
 AUTHOR
     Dmitry Vinogradenko <jin@hungosh.net>

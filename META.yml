@@ -9,8 +9,8 @@ configure_requires:
 dynamic_config: 0
 license: perl
 meta-spec:
-  version: 0.010
+  version: 0.011
 name: WWW-Bing-Search
 requires:
   LWP::UserAgent: 0
-version: 0.010
+version: 0.011
